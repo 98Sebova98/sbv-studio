@@ -58,3 +58,44 @@ if (socialPlatform && nicknameContainer && nicknameInput) {
     }
   });
 }
+
+const form = document.querySelector('#contact form');
+const status = document.getElementById('form-status');
+
+if (form && status) {
+  form.addEventListener('submit', async function(event) {
+    event.preventDefault(); // Останавливаем перезагрузку и переход на другое окно
+    
+    const data = new FormData(event.target);
+    
+    // Показываем пользователю, что идет отправка
+    status.style.display = 'block';
+    status.style.color = '#6366f1';
+    status.textContent = 'Отправка сообщения...';
+
+    // Отправляем данные на Formspree в фоновом режиме
+    fetch(event.target.action, {
+      method: form.method,
+      body: data,
+      headers: {
+        'Accept': 'application/json'
+      }
+    }).then(response => {
+      if (response.ok) {
+        status.style.color = '#22c55e'; // Зеленый цвет успеха
+        status.textContent = 'Спасибо! Ваша заявка успешно отправлена.';
+        form.reset(); // Очищаем поля формы
+        
+        // Прячем поле никнейма, так как форма сбросилась
+        const nicknameContainer = document.getElementById('nickname-container');
+        if (nicknameContainer) nicknameContainer.style.display = 'none';
+      } else {
+        status.style.color = '#ef4444'; // Красный цвет ошибки
+        status.textContent = 'Ой! Произошла ошибка при отправке.';
+      }
+    }).catch(error => {
+      status.style.color = '#ef4444';
+      status.textContent = 'Ошибка сети. Проверьте подключение к интернету.';
+    });
+  });
+}
