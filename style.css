@@ -91,6 +91,144 @@ section{
   max-width:1100px;
 }
 
+/* ==========================================
+   КАРУСЕЛЬ ДЛЯ СЕКЦИИ SERVICES
+   ========================================== */
+.carousel-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.carousel-wrapper {
+  overflow: hidden;
+  width: 100%;
+  padding: 15px 5px; /* Чтобы тени карточек не обрезались */
+}
+
+.carousel-track {
+  display: flex;
+  gap: 25px;
+  transition: transform 0.4s ease-in-out;
+}
+
+.service-slide {
+  flex: 0 0 calc(33.333% - 17px); /* По 3 карточки на десктопе */
+  opacity: 1 !important; /* Отключаем для слайдера старый эффект появления, чтобы не ломать верстку */
+  transform: none !important;
+}
+
+/* Кнопки управления каруселью */
+.carousel-btn {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #0f172a;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 10;
+  transition: .3s;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+}
+
+.carousel-btn:hover {
+  background: #6366f1;
+  color: #ffffff;
+  border-color: #6366f1;
+}
+
+.prev-btn { left: -60px; }
+.next-btn { right: -60px; }
+
+/* Точки */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.dot.active {
+  background: #6366f1;
+  width: 24px;
+  border-radius: 5px;
+}
+
+.advantage-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  width: 50%;
+}
+
+/* ==========================================
+   ОБНОВЛЕННЫЕ СТИЛИ ДЛЯ ВЕКТОРНОЙ ГРАФИКИ И ШАХМАТНОГО ПОРЯДКА
+   ========================================== */
+.advantages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 60px; /* Увеличили расстояние между рядами для лучшего визуального восприятия */
+  margin-top: 40px;
+}
+
+.advantage-row {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Центрируем элементы ряда, если они не на всю ширину */
+  gap: 80px; /* Увеличили зазор между карточкой и иконкой */
+}
+
+/* Автоматический шахматный порядок */
+.advantage-row:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+/* Ограничиваем ширину карточки, чтобы она не была слишком широкой */
+.advantage-row .card {
+  flex: 0 1 450px; /* Карточка не будет растягиваться шире 450px */
+  margin: 0; /* Убираем лишние внешние отступы */
+}
+
+/* Контейнер для иконки */
+.advantage-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 1 450px; /* Область картинки симметрична карточке */
+}
+
+/* Сама SVG-иконка */
+.advantage-svg {
+  width: 130px;
+  height: 130px;
+  filter: drop-shadow(0 10px 20px rgba(99, 102, 241, 0.15));
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+/* Интерактивный эффект при наведении */
+.advantage-row:hover .advantage-svg {
+  transform: scale(1.1) rotate(3deg);
+  filter: drop-shadow(0 15px 25px rgba(99, 102, 241, 0.3));
+}
+
 /* HERO */
 .hero{
   background: radial-gradient(circle at top, #eef2ff, #f1f5f9);
@@ -236,9 +374,40 @@ footer{
 }
 
 /* ADAPTIVE */
+@media(max-width: 1100px) {
+  .prev-btn { left: -20px; }
+  .next-btn { right: -20px; }
+}
+
 @media(max-width:900px){
   .grid{grid-template-columns:repeat(2,1fr)}
   .hero h1{font-size:34px}
+  .service-slide {
+    flex: 0 0 calc(50% - 13px); /* По 2 карточки на планшетах */
+  }
+  
+  .advantages-list {
+    gap: 40px;
+  }
+
+  .advantage-row, 
+  .advantage-row:nth-child(even) {
+    flex-direction: column; /* На планшетах и телефонах — в один столбик */
+    gap: 20px;
+    text-align: center; /* Центрируем текст на мобильных */
+  }
+  
+  .advantage-row .card,
+  .advantage-row .advantage-image {
+    width: 100%;
+    max-width: 100%; /* На мобильных карточка занимает всю доступную ширину экрана */
+  }
+
+  .advantage-svg {
+    width: 100px;
+    height: 100px;
+    margin-top: 10px;
+  }
 }
 
 @media(max-width:600px){
@@ -246,6 +415,12 @@ footer{
   .hero h1{font-size:26px}
   h2{font-size: 26px}
   form { padding: 25px; }
+  .service-slide {
+    flex: 0 0 100%; /* По 1 карточке на смартфонах */
+  }
+  .carousel-btn {
+    display: none; /* Прячем стрелочки на телефонах, там удобнее листать свайпом/точками */
+  }
 }
 
 /* MOBILE MENU */
