@@ -97,3 +97,96 @@ if (contactForm && formStatus) {
     });
   });
 }
+
+// ==========================================
+// ЛЕГКАЯ КАРУСЕЛЬ ДЛЯ СЕКЦИИ SERVICES
+// ==========================================
+
+const track = document.getElementById('services-track');
+const prevBtn = document.getElementById('prev-service');
+const nextBtn = document.getElementById('next-service');
+const dotsContainer = document.getElementById('services-dots');
+
+if (track && prevBtn && nextBtn && dotsContainer) {
+  const slides = Array.from(track.children);
+  let currentIndex = 0;
+
+  // Функция для определения количества видимых слайдов в зависимости от ширины экрана
+  function getVisibleSlidesCount() {
+    if (window.innerWidth <= 600) return 1;
+    if (window.innerWidth <= 900) return 2;
+    return 3;
+  }
+
+  // Функция расчета максимального индекса для смещения
+  function getMaxIndex() {
+    return slides.length - getVisibleSlidesCount();
+  }
+
+  // Создание точек навигации
+  function createDots() {
+    dotsContainer.innerHTML = '';
+    const maxDots = getMaxIndex() + 1;
+    for (let i = 0; i < maxDots; i++) {
+      const dot = document.createElement('div');
+      dot.classList.add('dot');
+      if (i === currentIndex) dot.classList.add('active');
+      dot.addEventListener('click', () => {
+        currentIndex = i;
+        updateSlider();
+      });
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  // Обновление положения слайдера и активности элементов
+  function updateSlider() {
+    const maxIdx = getMaxIndex();
+    if (currentIndex > maxIdx) currentIndex = maxIdx;
+
+    const slideWidth = slides[0].getBoundingClientRect().width;
+    const gap = 25; // Тот же gap, что прописан в CSS
+    
+    // Считаем шаг смещения
+    const amountToMove = currentIndex * (slideWidth + gap);
+    track.style.transform = `translateX(-${amountToMove}px)`;
+
+    // Обновляем точки
+    const dots = Array.from(dotsContainer.children);
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentIndex);
+    });
+
+    // Блокировка/активация стрелок управления
+    prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
+    prevBtn.style.pointerEvents = currentIndex === 0 ? 'none' : 'auto';
+    nextBtn.style.opacity = currentIndex === maxIdx ? '0.5' : '1';
+    nextBtn.style.pointerEvents = currentIndex === maxIdx ? 'none' : 'auto';
+  }
+
+  // Слушатели событий на кнопках
+  nextBtn.addEventListener('click', () => {
+    if (currentIndex < getMaxIndex()) {
+      currentIndex++;
+      updateSlider();
+    }
+  });
+
+  prevBtn.addEventListener('click', () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateSlider();
+    }
+  });
+
+  // Пересчет при изменении размеров экрана
+  window.addEventListener('resize', () => {
+    createDots();
+    updateSlider();
+  });
+
+  // Инициализация при старте
+  createDots();
+  // Небольшая задержка, чтобы браузер успел отрендерить элементы перед расчетом ширины
+  setTimeout(updateSlider, 100);
+}
