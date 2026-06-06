@@ -342,7 +342,7 @@ h2::after {
   transition: opacity .5s ease, transform .5s ease, border-color .3s ease, box-shadow .3s ease, background .3s ease;
 }
 
-.card h3 {
+.card h4 {
   font-size: 20px;
   margin-bottom: 12px;
   color: #0f172a;
