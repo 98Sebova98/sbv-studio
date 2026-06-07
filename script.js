@@ -99,7 +99,7 @@ if (contactForm && formStatus) {
 }
 
 // ==========================================
-// ЛЕГКАЯ КАРУСЕЛЬ ДЛЯ СЕКЦИИ SERVICES
+// ЛЕГКАЯ КАРУСЕЛЬ ДЛЯ СЕКЦИИ SERVICES (С ПОДДЕРЖКОЙ СВАЙПОВ)
 // ==========================================
 
 const track = document.getElementById('services-track');
@@ -110,6 +110,10 @@ const dotsContainer = document.getElementById('services-dots');
 if (track && prevBtn && nextBtn && dotsContainer) {
   const slides = Array.from(track.children);
   let currentIndex = 0;
+
+  // Переменные для отслеживания свайпа
+  let touchStartX = 0;
+  let touchEndX = 0;
 
   // Функция для определения количества видимых слайдов в зависимости от ширины экрана
   function getVisibleSlidesCount() {
@@ -143,6 +147,7 @@ if (track && prevBtn && nextBtn && dotsContainer) {
   function updateSlider() {
     const maxIdx = getMaxIndex();
     if (currentIndex > maxIdx) currentIndex = maxIdx;
+    if (currentIndex < 0) currentIndex = 0;
 
     const slideWidth = slides[0].getBoundingClientRect().width;
     const gap = 25; // Тот же gap, что прописан в CSS
@@ -153,9 +158,11 @@ if (track && prevBtn && nextBtn && dotsContainer) {
 
     // Обновляем точки
     const dots = Array.from(dotsContainer.children);
-    dots.forEach((dot, index) => {
-      dot.classList.toggle('active', index === currentIndex);
-    });
+    if (dots.length > 0) {
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentIndex);
+      });
+    }
 
     // Блокировка/активация стрелок управления
     prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
@@ -163,6 +170,38 @@ if (track && prevBtn && nextBtn && dotsContainer) {
     nextBtn.style.opacity = currentIndex === maxIdx ? '0.5' : '1';
     nextBtn.style.pointerEvents = currentIndex === maxIdx ? 'none' : 'auto';
   }
+
+  // Функция обработки жестов свайпа
+  function handleSwipe() {
+    const swipeThreshold = 50; // Минимальная дистанция для фиксации свайпа в пикселях
+    const diff = touchStartX - touchEndX;
+
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0) {
+        // Свайп влево -> следующий слайд
+        if (currentIndex < getMaxIndex()) {
+          currentIndex++;
+          updateSlider();
+        }
+      } else {
+        // Свайп вправо -> предыдущий слайд
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateSlider();
+        }
+      }
+    }
+  }
+
+  // Слушатели тач-событий для свайпа на мобильных
+  track.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  track.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  }, { passive: true });
 
   // Слушатели событий на кнопках
   nextBtn.addEventListener('click', () => {
@@ -187,6 +226,5 @@ if (track && prevBtn && nextBtn && dotsContainer) {
 
   // Инициализация при старте
   createDots();
-  // Небольшая задержка, чтобы браузер успел отрендерить элементы перед расчетом ширины
   setTimeout(updateSlider, 100);
 }
