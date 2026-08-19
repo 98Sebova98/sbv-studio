@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-commerce Development | SBV-studio</title>
+  <meta name="description" content="High-performance online store creation with advanced filters, carts, and user admin panels.">
+  <link rel="stylesheet" href="../style.css">
+  <script src="../script.js" defer></script>
+</head>
+<body>
+
+<header class="header">
+  <div class="container nav">
+    <a href="../index-en.html" class="logo"><img src="../assets/logo.png" alt="SBV-studio Logo" class="logo-img"></a>
+    <div class="nav-right">
+      <nav class="menu" id="menu">
+        <a href="../index-en.html#hero">Home</a>
+        <a href="../index-en.html#services">Services</a>
+        <a href="../index-en.html#advantages">Advantages</a>
+        <a href="../index-en.html#process">Process</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="lang-switch">
+        <a href="ecommerce.html" class="lang-item">UA</a><span class="lang-divider">|</span>
+        <span class="lang-item active">EN</span>
+      </div>
+      <button class="burger" id="burger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<section class="page-header">
+  <div class="container">
+    <a href="../index-en.html#services" class="back-link">&#8592; Back to Services</a>
+    <h1>E-commerce Store Development</h1>
+  </div>
+</section>
+
+<section class="service-detail-content">
+  <div class="container">
+    <div class="service-detail-grid">
+      <div class="main-info">
+        <h3>Features of a modern online store:</h3>
+        <p>We build convenient e-commerce solutions that maximize product sales and user conversions.</p>
+        <ul style="margin: 20px 0; padding-left: 20px; line-height: 1.8;">
+          <li>Interactive catalog with filters and quick search</li>
+          <li>Shopping carts and client account management</li>
+          <li>Integration with online payment methods & delivery services</li>
+          <li>Easy-to-use admin panel for fast stock catalog management</li>
+        </ul>
+      </div>
+      <div class="sidebar">
+        <div class="card">
+          <h4>Want to sell online?</h4>
+          <p>Submit a request to calculate your project quote.</p>
+          <a href="#contact" class="btn" style="display: block; text-align: center; margin-top: 15px;">Order Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <h2>Start a Project</h2>
+    <form action="https://formspree.io/f/mojzaedl" method="POST">
+      <input type="text" name="name" placeholder="Your name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <select name="social_platform" id="social-platform" required>
+        <option value="" disabled selected>Select a messenger for communication</option>
+        <option value="Telegram">Telegram</option>
+        <option value="Instagram">Instagram</option>
+        <option value="Viber">Viber</option>
+        <option value="Facebook">Facebook</option>
+      </select>
+      <div id="nickname-container" style="display: none;">
+        <input type="text" name="nickname" id="nickname-input" placeholder="Your handle or phone number">
+      </div>
+      <textarea name="message" placeholder="Describe your products and approximate catalog size" rows="5"></textarea>
+      <button type="submit" class="btn">Send Request</button>
+      <p id="form-status" style="margin-top: 15px; font-weight: bold; display: none;"></p>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-container">
+    <div class="footer-brand">
+      <a href="../index-en.html" class="footer-logo"><img src="../assets/logo.png" alt="SBV-studio Logo" class="logo-img"></a>
+      <p>Professional website and chatbot development.</p>
+    </div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 SBV-studio. All rights reserved.</p></div>
+</footer>
+
+</body>
+</html>

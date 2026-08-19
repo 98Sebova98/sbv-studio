@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Turnkey Website Development | SBV-studio</title>
+  <meta name="description" content="Professional development of modern websites: Landing Pages, corporate websites, and catalogs by SBV-studio.">
+  
+  <link rel="stylesheet" href="../style.css">
+  <script src="../script.js" defer></script>
+</head>
+<body>
+
+<header class="header">
+  <div class="container nav">
+    <a href="../index-en.html" class="logo">
+      <img src="../assets/logo.png" alt="SBV-studio Logo" class="logo-img">
+    </a>
+
+    <div class="nav-right">
+      <nav class="menu" id="menu">
+        <a href="../index-en.html#hero">Home</a>
+        <a href="../index-en.html#services">Services</a>
+        <a href="../index-en.html#advantages">Advantages</a>
+        <a href="../index-en.html#process">Process</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="lang-switch">
+        <a href="turnkey-websites.html" class="lang-item">UA</a>
+        <span class="lang-divider">|</span>
+        <span class="lang-item active">EN</span>
+      </div>
+
+      <button class="burger" id="burger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="page-header">
+  <div class="container">
+    <a href="../index-en.html#services" class="back-link">&#8592; Back to Services</a>
+    <h1>Turnkey Website Development</h1>
+  </div>
+</section>
+
+<section class="service-detail-content">
+  <div class="container">
+    <div class="service-detail-grid">
+      <div class="main-info">
+        <h3>What is included in the service:</h3>
+        <p>We build modern websites using clean code without heavy page builders. This guarantees maximum page load speed and high search engine rankings.</p>
+        
+        <ul style="margin: 20px 0; padding-left: 20px; line-height: 1.8;">
+          <li>Custom UI/UX design tailored to your brand</li>
+          <li>Fully responsive layout for mobile and tablet devices</li>
+          <li>Basic SEO optimization and analytics integration</li>
+          <li>Functional contact and lead capture forms</li>
+        </ul>
+
+        <p>Every project is crafted around your specific business goals to ensure optimal conversion rates.</p>
+      </div>
+
+      <div class="sidebar">
+        <div class="card">
+          <h4>Need a website?</h4>
+          <p>Leave a request, and we will discuss your project within 15 minutes.</p>
+          <a href="#contact" class="btn" style="display: block; text-align: center; margin-top: 15px;">Order Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <h2>Start a Project</h2>
+    <form action="https://formspree.io/f/mojzaedl" method="POST">
+      <input type="text" name="name" placeholder="Your name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      
+      <select name="social_platform" id="social-platform" required>
+        <option value="" disabled selected>Select a messenger for communication</option>
+        <option value="Telegram">Telegram</option>
+        <option value="Instagram">Instagram</option>
+        <option value="Viber">Viber</option>
+        <option value="Facebook">Facebook</option>
+      </select>
+
+      <div id="nickname-container" style="display: none;">
+        <input type="text" name="nickname" id="nickname-input" placeholder="Your handle or phone number">
+      </div>
+
+      <textarea name="message" placeholder="Briefly describe your project" rows="5"></textarea>
+      
+      <button type="submit" class="btn">Send Request</button>
+      <p id="form-status" style="margin-top: 15px; font-weight: bold; display: none;"></p>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-container">
+    <div class="footer-brand">
+      <a href="../index-en.html" class="footer-logo">
+        <img src="../assets/logo.png" alt="SBV-studio Logo" class="logo-img">
+      </a>
+      <p>Professional website and chatbot development.</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 SBV-studio. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

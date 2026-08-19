@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Systems & API | SBV-studio</title>
+  <meta name="description" content="Integration of MonoPay, WayForPay, LiqPay acquiring, Stripe, and delivery APIs.">
+  <link rel="stylesheet" href="../style.css">
+  <script src="../script.js" defer></script>
+</head>
+<body>
+
+<header class="header">
+  <div class="container nav">
+    <a href="../index-en.html" class="logo"><img src="../assets/logo.png" alt="SBV-studio Logo" class="logo-img"></a>
+    <div class="nav-right">
+      <nav class="menu" id="menu">
+        <a href="../index-en.html#hero">Home</a>
+        <a href="../index-en.html#services">Services</a>
+        <a href="../index-en.html#advantages">Advantages</a>
+        <a href="../index-en.html#process">Process</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="lang-switch">
+        <a href="payments-api.html" class="lang-item">UA</a><span class="lang-divider">|</span>
+        <span class="lang-item active">EN</span>
+      </div>
+      <button class="burger" id="burger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<section class="page-header">
+  <div class="container">
+    <a href="../index-en.html#services" class="back-link">&#8592; Back to Services</a>
+    <h1>Payment Systems & API</h1>
+  </div>
+</section>
+
+<section class="service-detail-content">
+  <div class="container">
+    <div class="service-detail-grid">
+      <div class="main-info">
+        <h3>Accept online payments and automate deliveries:</h3>
+        <p>Integrate bank acquiring solutions on your platform or chatbot along with automated delivery waybill generation.</p>
+        <ul style="margin: 20px 0; padding-left: 20px; line-height: 1.8;">
+          <li>Integration with MonoPay, WayForPay, LiqPay, and Stripe</li>
+          <li>Postal API sync (Nova Poshta, Ukrposhta) for automated shipping costs</li>
+          <li>Automatic shipping declaration generation during checkout</li>
+          <li>Secure encrypted transaction handling</li>
+        </ul>
+      </div>
+      <div class="sidebar">
+        <div class="card">
+          <h4>Need payment setup?</h4>
+          <p>We can integrate card processing within 1–2 days.</p>
+          <a href="#contact" class="btn" style="display: block; text-align: center; margin-top: 15px;">Order Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <h2>Start a Project</h2>
+    <form action="https://formspree.io/f/mojzaedl" method="POST">
+      <input type="text" name="name" placeholder="Your name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <select name="social_platform" id="social-platform" required>
+        <option value="" disabled selected>Select a messenger for communication</option>
+        <option value="Telegram">Telegram</option>
+        <option value="Instagram">Instagram</option>
+        <option value="Viber">Viber</option>
+        <option value="Facebook">Facebook</option>
+      </select>
+      <div id="nickname-container" style="display: none;">
+        <input type="text" name="nickname" id="nickname-input" placeholder="Your handle or phone number">
+      </div>
+      <textarea name="message" placeholder="Which payment processor would you like to connect?" rows="5"></textarea>
+      <button type="submit" class="btn">Send Request</button>
+      <p id="form-status" style="margin-top: 15px; font-weight: bold; display: none;"></p>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-container">
+    <div class="footer-brand">
+      <a href="../index-en.html" class="footer-logo"><img src="../assets/logo.png" alt="SBV-studio Logo" class="logo-img"></a>
+      <p>Professional website and chatbot development.</p>
+    </div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 SBV-studio. All rights reserved.</p></div>
+</footer>
+
+</body>
+</html>
